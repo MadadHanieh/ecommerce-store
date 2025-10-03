@@ -4,27 +4,22 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ### Environment Setup
 
-1. Copy the example environment files to create your own:
+1. Copy the example environment file to create your own:
    ```bash
    cp .env.example .env
-   cp .env.docker.example .env.docker
    ```
 
-2. Edit the `.env.docker` file with your database credentials:
+2. Edit the `.env` file with your database credentials:
    ```
    POSTGRES_USER=your_username
    POSTGRES_PASSWORD=your_secure_password
    POSTGRES_DB=your_database_name
+   DATABASE_URL="postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@localhost:5432/${POSTGRES_DB}?schema=public"
    ```
 
-3. Edit the `.env` file with matching database credentials:
-   ```
-   DATABASE_URL="postgresql://your_username:your_secure_password@localhost:5432/your_database_name?schema=public"
-   ```
-
-4. Start the PostgreSQL database using Docker:
+3. Start the PostgreSQL database using Docker:
    ```bash
-   docker-compose --env-file .env.docker up -d
+   docker-compose up -d
    ```
 
 4. Initialize Prisma and generate the client:
